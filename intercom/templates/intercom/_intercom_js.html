@@ -1,9 +1,9 @@
-{% if email %}
 <script>
   var intercomSettings = {
     app_id: '{{ app_id }}',
-    email: '{{ email }}',{% if user_hash %}
-    user_hash: '{{ user_hash }}',{% endif %}
+	user_id : {{ user_id }},
+    {% if email %}email: '{{ email }}',{% if user_hash %}
+    user_hash: '{{ user_hash }}',{% endif %}{% endif %}
     custom_data: {{ custom_data|safe }},
     created_at: {{ created_at }},
     widget: {
@@ -29,4 +29,3 @@
     };
   })();
 </script>
-{% endif %}
