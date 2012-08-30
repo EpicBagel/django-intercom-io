@@ -22,21 +22,27 @@ def intercom_js(request):
 
 			user_hash = None
 			
-		company = request.company
-		
-		custom_data = {
-		
-			'company_name' : company.company_name,
+		custom_data = {}
 			
-			'account_status' : company.account_status,
-		
-		}
+		if hasattr(request, 'company'):
+			
+			company = request.company
+			
+			custom_data.update({
+			
+				'company_name' : company.company_name,
+				
+				'account_status' : company.account_status,
+			
+			})
 		
 		return {
 			
 			"app_id": settings.INTERCOM_APP_ID,
 			
 			"email": user.email,
+			
+			'name' : user.get_full_name(),
 			
 			'user_id' : user.id,
 			
