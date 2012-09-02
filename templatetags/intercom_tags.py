@@ -28,13 +28,17 @@ def intercom_js(request):
 			
 			company = request.company
 			
-			custom_data.update({
+			try:
 			
-				'company_name' : company.company_name,
+				custom_data.update({
 				
-				'account_status' : company.account_status,
-			
-			})
+					'company_name' : company.company_name,
+					
+					'account_status' : company.account_status,
+				
+				})
+	
+			except AttributeError: pass
 		
 		return {
 			
