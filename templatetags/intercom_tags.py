@@ -14,9 +14,9 @@ def intercom_js(request):
 	
 	if hasattr(settings, "INTERCOM_APP_ID") and user.is_authenticated():
 
-		if hasattr(settings, "INTERCOM_USER_HASH_KEY") and user.email:
+		if hasattr(settings, "INTERCOM_USER_HASH_KEY"):
 
-			user_hash = sha_constructor(settings.INTERCOM_USER_HASH_KEY + user.email).hexdigest()
+			user_hash = sha_constructor(settings.INTERCOM_USER_HASH_KEY + str(user.id)).hexdigest()
 
 		else:
 

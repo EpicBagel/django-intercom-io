@@ -8,11 +8,7 @@
     created_at: {{ created_at }},
     name: "{{ name }}",
     widget: {
-      use_counter: true,
-      activator: '#Intercom',
-      activator_html: function ( obj ) {
-        return obj.activator_html_functions.brackets();
-      }
+      activator: '#IntercomDefaultWidget'
     },
   };
   (function() {
