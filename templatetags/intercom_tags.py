@@ -12,7 +12,8 @@ def intercom_js(request):
 	
 	user = request.user
 	
-	if hasattr(settings, "INTERCOM_APP_ID") and user.is_authenticated():
+	# Don;t load for Superadmin
+	if hasattr(settings, "INTERCOM_APP_ID") and user.is_authenticated() and not request.session.get('is_superadmin', False):
 
 		if hasattr(settings, "INTERCOM_USER_HASH_KEY"):
 
